@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from "../resources/img/pizza-logo.svg";
-import ShoppingCartButton from "./ShoppingCartButton";
+import ButtonShoppingCart from "./ButtonShoppingCart";
 
-const Header = () => {
+
+const Header = (props) => {
+
+
         return (
             <div className="header">
                 <div className="container">
@@ -14,7 +17,8 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="header__cart">
-                        <ShoppingCartButton/>
+                        <ButtonShoppingCart
+                        className="button--cart"/>
                     </div>
                 </div>
             </div>
