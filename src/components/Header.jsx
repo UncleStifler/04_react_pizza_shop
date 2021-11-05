@@ -3,8 +3,7 @@ import logo from "../resources/img/pizza-logo.svg";
 import ButtonShoppingCart from "./ButtonShoppingCart";
 
 
-const Header = (props) => {
-
+const Header = React.memo((props) => {
 
         return (
             <div className="header">
@@ -23,6 +22,6 @@ const Header = (props) => {
                 </div>
             </div>
         );
-    }
+    })
 ;
 export default Header;

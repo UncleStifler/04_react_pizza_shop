@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
 import {v1} from "uuid";
 
-const Categories = (props) => {
+const Categories = React.memo((props) => {
+
 
     const {itemsCategories} = props;
     const [activeItem, setActiveItem] = useState(0);
 
     const onClickActive = (index) => {
-        setActiveItem(index);
+            setActiveItem(index);
     };
 
     return (
         <div className="categories">
             <ul>
-                {itemsCategories.map((t, index) => {
+                {itemsCategories && itemsCategories.map((t, index) => {
                         let key = v1();
                         return (
                             <li
@@ -27,6 +28,6 @@ const Categories = (props) => {
             </ul>
         </div>
     );
-};
+});
 
 export default Categories;

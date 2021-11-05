@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const ButtonShoppingCart = (props) => {
+const ButtonShoppingCart = React.memo((props) => {
 
-    const {onClick, className, outline, children}= props
+    const {className, outline} = props;
 
     return (
         <button
@@ -46,6 +46,6 @@ const ButtonShoppingCart = (props) => {
             {/*</a>*/}
         </button>
     );
-};
+});
 
 export default ButtonShoppingCart;
