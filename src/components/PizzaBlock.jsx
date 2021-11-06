@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {v1} from "uuid";
 import classNames from "classnames";
+import PropTypes, {number} from "prop-types";
+
 
 const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
 
@@ -9,7 +11,7 @@ const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
 
     const typesNames = ["fina", "tradicional"];
 
-    const onActiveSizeHandler = (index) => {
+    const onSelectSizeHandler = (index) => {
         setActiveSize(index);
     };
 
@@ -28,7 +30,7 @@ const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
             <div className="pizza-block__selector">
                 <ul>
                     {typesNames.map((type, index) => {
-                        let key = v1()
+                        let key = v1();
                         return (
                             <li
                                 key={key}
@@ -42,13 +44,14 @@ const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
                     })}
                 </ul>
                 <ul>
-                    {sizes.map((s, index) => {
+                    {sizes.map((size, index) => {
                         return (
                             <li
                                 key={index}
-                                className={activeSize === index ? "active" : ""}
-                                onClick={() => onActiveSizeHandler(index)}
-                            >{s} sm.</li>
+                                className={activeSize === index ? 'active' : ''}
+                                onClick={() => onSelectSizeHandler(index)}>
+                                {size} sm.
+                            </li>
                         );
                     })}
                 </ul>
@@ -75,5 +78,14 @@ const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
         </div>
     );
 };
+
+
+PizzaBlock.propTypes = {
+    name: PropTypes.string,
+    price: PropTypes.number,
+    imageUrl: PropTypes.string,
+    sizes: PropTypes.arrayOf(PropTypes.number),
+    types: PropTypes.arrayOf(PropTypes.number),
+}
 
 export default PizzaBlock;
