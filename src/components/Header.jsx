@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 const Header = React.memo((props) => {
         return (
             <>
-                {/*<Link to="/">*/}
                 <div className="header">
                     <div className="container">
                         <>
@@ -30,7 +29,6 @@ const Header = React.memo((props) => {
 
                     </div>
                 </div>
-                {/*</Link>*/}
             </>
         );
     })

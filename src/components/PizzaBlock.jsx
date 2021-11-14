@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {v1} from "uuid";
 import classNames from "classnames";
-import PropTypes, {number} from "prop-types";
+import PropTypes from "prop-types";
 
 
 const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
@@ -30,10 +29,10 @@ const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
             <div className="pizza-block__selector">
                 <ul>
                     {typesNames.map((type, index) => {
-                        let key = v1();
+                        // let key = v1();
                         return (
                             <li
-                                key={key}
+                                key={index}
                                 className={classNames({
                                     active: activeTypes === index,
                                     disabled: !types.includes(index)

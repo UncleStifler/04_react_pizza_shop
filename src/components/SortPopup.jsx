@@ -1,12 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {v1} from "uuid";
 
-const SortPopup = React.memo((props) =>{
+const SortPopup = (props) => {
 
     const [collapsed, setCollapsed] = useState(false);
     const [activeItem, setActiveItem] = useState('popularidad');
     const sortRef = useRef();
-
+    const namesItemsPopUp = props.typeOfFilterPopUp.map(t => t.name);
 
 
     useEffect(() => {
@@ -23,11 +22,10 @@ const SortPopup = React.memo((props) =>{
         setCollapsed(!collapsed);
     };
 
-    const onClickActive = (name) => {
-        if (name) {
-            setActiveItem(name);
-        }
+    const onClickActive = (index) => {
+        setActiveItem(index);
     };
+
 
     return (
         <div
@@ -54,19 +52,18 @@ const SortPopup = React.memo((props) =>{
             {collapsed &&
             <div className="sort__popup">
                 <ul>
-                    {props.typeOfFilterPopUp.map((t, index) => {
-                        let key = v1();
+                    {namesItemsPopUp.map((obj, index) => {
                         return (
-                            <li className={activeItem === t ? "active" : ''}
-                                onClick={() => onClickActive(t)}
-                                key={key}>
-                                {t}
+                            <li className={activeItem === obj ? "active" : ''}
+                                onClick={() => onClickActive(obj)}
+                                key={index}>
+                                {obj}
                             </li>);
                     })}
                 </ul>
             </div>}
         </div>
     );
-});
+};
 
 export default SortPopup;

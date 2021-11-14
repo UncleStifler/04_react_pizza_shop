@@ -15,12 +15,12 @@ const Categories = React.memo((props) => {
         <div className="categories">
             <ul>
                 {itemsCategories && itemsCategories.map((t, index) => {
-                        let key = v1();
+
                         return (
                             <li
                                 className={activeItem === index ? 'active' : ''}
                                 onClick={() => onClickActive(index)}
-                                key={key}>{t}
+                                key={index}>{t}
                             </li>
                         );
                     }
