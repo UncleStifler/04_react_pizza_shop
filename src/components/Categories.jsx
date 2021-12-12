@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
-import {useSelector} from "react-redux";
 
-const Categories = React.memo(() => {
-
-    const itemsCategories = useSelector(state => state.filters.itemsCategories)
-
+const Categories = React.memo(({onClickItem, itemsCategories}) => {
+    console.log("Categories rerender")
     const [activeItem, setActiveItem] = useState(0);
-
     const onClickActive = (index) => {
-            setActiveItem(index);
+        setActiveItem(index);
+        onClickItem(index)
     };
 
     return (

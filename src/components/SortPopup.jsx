@@ -1,15 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useSelector} from "react-redux";
 
-const SortPopup = () => {
-
-    const typeOfFilterPopUp = useSelector(state => state.filters.typeOfFilterPopUp)
+const SortPopup = React.memo(({typeOfFilterPopUp}) => {
 
     const [collapsed, setCollapsed] = useState(false);
     const [activeItem, setActiveItem] = useState('popularidad');
     const sortRef = useRef();
     const namesItemsPopUp = typeOfFilterPopUp.map(t => t.name);
-
 
     useEffect(() => {
         document.body.addEventListener('click', clickSomewhere);
@@ -67,6 +63,6 @@ const SortPopup = () => {
             </div>}
         </div>
     );
-};
+});
 
 export default SortPopup;

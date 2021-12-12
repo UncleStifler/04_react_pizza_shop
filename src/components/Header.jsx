@@ -14,7 +14,7 @@ const Header = React.memo((props) => {
                                 <div className="header__logo">
                                     <img width="38" src={logo} alt="Pizza logo"/>
                                     <div>
-                                        <h1>React Pizza</h1>
+                                        <h1>Pizza Tio</h1>
                                         <p>Una pizza más sabrosa del universo</p>
                                     </div>
                                 </div>

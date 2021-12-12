@@ -1,16 +1,12 @@
 import './App.css';
-import {useEffect} from "react";
-import axios from "axios";
 import Header from "./components/Header";
 import {Route} from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import axios from "axios";
 import {setPizzasAC} from "./actions/pizzasAction";
-import {pizzasReducer} from "./reducers/pizzasReducer";
-
-
-
+import {useDispatch} from "react-redux";
 
 // function App() {
 //
@@ -33,7 +29,6 @@ import {pizzasReducer} from "./reducers/pizzasReducer";
 //
 //     return;
 // }
-
 // class App extends Component {
 //     componentDidMount() {
 //         axios.get("http://localhost:3000/db.json").then(({data}) => {
@@ -72,9 +67,8 @@ import {pizzasReducer} from "./reducers/pizzasReducer";
 // import React from 'react';
 
 const App = () => {
-    const dispatch = useDispatch()
-    const items = useSelector(state => state.pizzas.items)
 
+    const dispatch = useDispatch()
     useEffect(() => {
         axios.get("http://localhost:3000/db.json")
             .then(({data}) => {
@@ -86,8 +80,7 @@ const App = () => {
         <div className="wrapper">
             <Header/>
             <div className="content">
-                <Route path="/" render={() =>
-                    <Home pizzas={items}/>} exact/>
+                <Route path="/" component={Home} exact/>
                 <Route path="/cart" component={Cart} exact/>
                 <div/>
             </div>

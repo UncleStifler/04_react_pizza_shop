@@ -1,6 +1,3 @@
-export const SET_SORT_BY = "SET_SORT_BY"
-export const SET_CATEGORY = "SET_CATEGORY"
-
 const initialState = {
     category: 0,
     sortBy: "popularidad",
@@ -16,11 +13,17 @@ const initialState = {
 
 export const filtersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_SORT_BY: {
+        case "SET_SORT_BY": {
             return {
                 ...state,
                 sortBy: action.payload
             };
+        }
+        case "SET_CATEGORY": {
+            return {
+                ...state,
+                category: action.payload
+            }
         }
 
         default:
@@ -28,3 +31,12 @@ export const filtersReducer = (state = initialState, action) => {
     }
 };
 
+export const setSortByAC = (sortName) => ({
+    type: "SET_SORT_BY",
+    payload: sortName
+})
+
+export const setCategoryAC = (catIndex) => ({
+    type: "SET_CATEGORY",
+    payload: catIndex
+})

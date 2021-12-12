@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 
 
-const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
+const PizzaBlock = React.memo(({name, price, imageUrl, sizes, types}) => {
 
     const [activeTypes, setActiveTypes] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(1);
@@ -76,7 +76,7 @@ const PizzaBlock = ({name, price, imageUrl, sizes, types}) => {
             </div>
         </div>
     );
-};
+});
 
 
 PizzaBlock.propTypes = {
