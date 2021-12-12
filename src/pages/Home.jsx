@@ -8,17 +8,13 @@ const Home = (props) => {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories
-                    itemsCategories={props.itemsCategories}
-
-                />
-                <SortPopup
-                    typeOfFilterPopUp={props.typeOfFilterPopUp}/>
+                <Categories/>
+                <SortPopup/>
             </div>
             <h2 className="content__title">Todas las pizzas</h2>
             <div className="content__items">
                 {
-                    props.pizzas.map(obj => {
+                   props.pizzas && props.pizzas.map(obj => {
                         return (
                             <PizzaBlock
                             key={obj.id}

@@ -4,7 +4,6 @@ const initialState = {
     isLoaded: false
 };
 
-
 export const pizzasReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_PIZZAS': {

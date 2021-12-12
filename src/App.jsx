@@ -1,18 +1,15 @@
 import './App.css';
-import {Component} from "react";
+import {useEffect} from "react";
 import axios from "axios";
-import {setPizzasAC} from "./actions/pizzasAction";
 import Header from "./components/Header";
 import {Route} from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setPizzasAC} from "./actions/pizzasAction";
+import {pizzasReducer} from "./reducers/pizzasReducer";
 
-export const itemsCategories = ["Todo", "Carne", "Vegetariano", "Gril", "Picante", "Cerrados"];
-export const typeOfFilterPopUp = [
-    {name: 'popularidad', type: 'popular'},
-    {name: 'precio', type: 'price'},
-    {name: 'alfabético', type: 'alphabet '}];
+
 
 
 // function App() {
@@ -37,36 +34,65 @@ export const typeOfFilterPopUp = [
 //     return;
 // }
 
-class App extends Component {
-    componentDidMount() {
-        axios.get("http://localhost:3000/db.json").then(({data}) => {
-            this.props.dispatch(setPizzasAC(data.pizzas));
-        });
-    }
+// class App extends Component {
+//     componentDidMount() {
+//         axios.get("http://localhost:3000/db.json").then(({data}) => {
+//             this.props.dispatch(setPizzasAC(data.pizzas));
+//         });
+//     }
+//
+//     render() {
+//         return (
+//             <div className="wrapper">
+//                 <Header/>
+//                 <div className="content">
+//                     <Route path="/" render={() =>
+//                         <Home
+//                             pizzas={this.props.items}
+//                             typeOfFilterPopUp={typeOfFilterPopUp}
+//                             itemsCategories={itemsCategories}/>} exact/>
+//                     <Route path="/cart" component={Cart} exact/>
+//                     <div/>
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
+//
+// const getState = (state) => {
+//     return {
+//         items: state.pizzas.items
+//     }
+// }
+//
+//
+// export default connect(getState)(App);
+//
+//
+// import React from 'react';
 
-    render() {
-        return (
-            <div className="wrapper">
-                <Header/>
-                <div className="content">
-                    <Route path="/" render={() =>
-                        <Home
-                            pizzas={this.props.items}
-                            typeOfFilterPopUp={typeOfFilterPopUp}
-                            itemsCategories={itemsCategories}/>} exact/>
-                    <Route path="/cart" component={Cart} exact/>
-                    <div/>
-                </div>
+const App = () => {
+    const dispatch = useDispatch()
+    const items = useSelector(state => state.pizzas.items)
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/db.json")
+            .then(({data}) => {
+                dispatch(setPizzasAC(data.pizzas));
+            })
+    }, [])
+
+    return (
+        <div className="wrapper">
+            <Header/>
+            <div className="content">
+                <Route path="/" render={() =>
+                    <Home pizzas={items}/>} exact/>
+                <Route path="/cart" component={Cart} exact/>
+                <div/>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
-const getState = (state) => {
-    return {
-        items: state.pizzas.items
-    }
-}
-
-
-export default connect(getState)(App);
+export default App;

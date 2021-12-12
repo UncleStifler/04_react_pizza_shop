@@ -1,11 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
+import {useSelector} from "react-redux";
 
-const SortPopup = (props) => {
+const SortPopup = () => {
+
+    const typeOfFilterPopUp = useSelector(state => state.filters.typeOfFilterPopUp)
 
     const [collapsed, setCollapsed] = useState(false);
     const [activeItem, setActiveItem] = useState('popularidad');
     const sortRef = useRef();
-    const namesItemsPopUp = props.typeOfFilterPopUp.map(t => t.name);
+    const namesItemsPopUp = typeOfFilterPopUp.map(t => t.name);
 
 
     useEffect(() => {

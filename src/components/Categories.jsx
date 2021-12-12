@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {v1} from "uuid";
+import {useSelector} from "react-redux";
 
-const Categories = React.memo((props) => {
+const Categories = React.memo(() => {
 
+    const itemsCategories = useSelector(state => state.filters.itemsCategories)
 
-    const {itemsCategories} = props;
     const [activeItem, setActiveItem] = useState(0);
 
     const onClickActive = (index) => {

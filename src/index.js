@@ -9,14 +9,14 @@ import {Provider} from "react-redux";
 
 
 ReactDOM.render(
-    // <React.StrictMode>
+    //<React.StrictMode>
+
     <Provider store={store}>
         <BrowserRouter>
             <App/>
         </BrowserRouter>,
     </Provider>,
-
-    document.getElementById('root')
+document.getElementById('root')
 );
 
-reportWebVitals();
+

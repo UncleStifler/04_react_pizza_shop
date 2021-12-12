@@ -3,7 +3,14 @@ export const SET_CATEGORY = "SET_CATEGORY"
 
 const initialState = {
     category: 0,
-    sortBy: "popularidad"
+    sortBy: "popularidad",
+    typeOfFilterPopUp: [
+        {name: 'popularidad', type: 'popular'},
+        {name: 'precio', type: 'price'},
+        {name: 'alfabético', type: 'alphabet '}
+    ],
+    itemsCategories:
+        ["Todo", "Carne", "Vegetariano", "Gril", "Picante", "Cerrados"]
 };
 
 
